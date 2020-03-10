@@ -3,6 +3,7 @@ package ke.co.fargocourier.controller;
 import ke.co.fargocourier.config.TokenProvider;
 import ke.co.fargocourier.model.AuthToken;
 import ke.co.fargocourier.model.dto.LoginUser;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,6 +25,24 @@ public class AuthenticationController {
 
     @Autowired
     private TokenProvider jwtTokenUtil;
+    
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String getIndex(){
+    			
+		return "<!DOCTYPE html>\n" + 
+				"<html>\n" + 
+				"<body>\n" + 
+				"\n" + 
+				"<h1>Courier branches and pricing api</h1>\n" + 
+				"<p>Courier branches and price calculator api is a spring boot, jpa rest controller system that allows you to set all company branches, suburbs, its sub-zones and calculate cost to transport any kind of parcel from one suburb to another."
+				+ " For more information please contact Email:jmbuthia12@gmail.com or Phone:+254717925741</p>\n" + 
+				"\n" + 
+				"</body>\n" + 
+				"</html>";
+	
+	}
+    
+    	
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> register(@RequestBody LoginUser loginUser) throws AuthenticationException {
